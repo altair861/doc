@@ -75,7 +75,7 @@ mObject obj) {
 
 3、查询结果，intent传值问题 
 
-![image-20191030094359121](/Users/altair86/Library/Application Support/typora-user-images/image-20191030094359121.png)
+![image-intent](./pic/image-intent.png)
 
 4、其他：线程；realmlist没有序列化；Realmlist<T>中，T必须继承RealmObject，ealmList<String>;自己维护primarykey
 

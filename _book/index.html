@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>DBColumn · GitBook</title>
+        <title>Introduction · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,6 +57,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="DBColumn/README.md" />
+    
     
 
     </head>
@@ -90,7 +92,59 @@
                 <a href="./">
             
                     
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="DBColumn/README.md">
+            
+                <span>
+            
+                    
                     DBColumn
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="DBColumn/start.md">
+            
+                <span>
+            
+                    
+                    源起
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="DBColumn/about.md">
+            
+                <span>
+            
+                    
+                    框架
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="DBColumn/jar.md">
+            
+                <span>
+            
+                    
+                    jar包生成
             
                 </a>
             
@@ -128,7 +182,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >DBColumn</a>
+        <a href="." >Introduction</a>
     </h1>
 </div>
 
@@ -143,57 +197,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <ul>
-<li><a href="./">realm&#x4ECE;&#x5165;&#x95E8;&#x5230;&#x653E;&#x5F03;</a>   </li>
-<li><a href="Chapter1/README.md">&#x7B2C;&#x4E00;&#x7AE0;</a><ul>
-<li><a href="Chapter1/&#x8863;.md">&#x7B2C;1&#x8282;&#xFF1A;&#x8863;</a></li>
-<li><a href="Chapter1/&#x98DF;.md">&#x7B2C;2&#x8282;&#xFF1A;&#x98DF;</a></li>
-<li><a href="Chapter1/&#x4F4F;.md">&#x7B2C;3&#x8282;&#xFF1A;&#x4F4F;</a></li>
-<li><a href="Chapter1/&#x884C;.md">&#x7B2C;4&#x8282;&#xFF1A;&#x884C;</a></li>
-</ul>
-</li>
-<li><a href="Chapter2/README.md">&#x7B2C;&#x4E8C;&#x7AE0;</a></li>
-<li><a href="Chapter3/README.md">&#x7B2C;&#x4E09;&#x7AE0;</a></li>
-<li><a href="Chapter4/README.md">&#x7B2C;&#x56DB;&#x7AE0;</a></li>
-</ul>
-<h6 id="aaaa1"><strong>Aaaa1</strong></h6>
-<p>1&#x3001;&#x7EE7;&#x627F;&#x57FA;&#x7C7B;&#x95EE;&#x9898;</p>
-<pre><code class="lang-@RealmClass```">
-```public class User extends BaseModel implements RealmModel
-</code></pre>
-<p>&#x5F88;&#x6B63;&#x5E38;&#x7684;&#x4E00;&#x4E2A;&#x9700;&#x6C42;&#xFF0C;&#x7ED3;&#x679C;&#xFF1A;</p>
-<p><code>&#x9519;&#x8BEF;: Realm model classes must either extend RealmObject or implement RealmModel to be considered a valid model class</code></p>
-<p>2&#x3001;&#x8868;&#x66F4;&#x65B0;</p>
-<blockquote>
-<p>/**</p>
-</blockquote>
-<p>  * &#x5347;&#x7EA7;&#x6570;&#x636E;&#x5E93;</p>
-<p>  */</p>
-<p> class CustomMigration implements RealmMigration {</p>
-<p>&#x200B;     @Override</p>
-<p>&#x200B;     public void migrate(DynamicRealm realm, long oldVersion, long newVersion) {</p>
-<p>&#x200B;         RealmSchema schema = realm.getSchema();</p>
-<p>&#x200B;         if (oldVersion == 0 &amp;&amp; newVersion == 1) {</p>
-<p>&#x200B;             RealmObjectSchema personSchema = schema.get(&quot;User&quot;);</p>
-<p>&#x200B;             //&#x65B0;&#x589E;@Required&#x7684;id</p>
-<p>&#x200B;             personSchema</p>
-<p>&#x200B;                     .addField(&quot;id&quot;, String.class, FieldAttribute.REQUIRED)</p>
-<p>&#x200B;                     .transform(new RealmObjectSchema.Function() {</p>
-<p>&#x200B;                         @Override</p>
-<p>&#x200B;                         public void apply(DynamicReal</p>
-<p>mObject obj) {</p>
-<p>&#x200B;                             obj.set(&quot;id&quot;, &quot;1&quot;);//&#x4E3A;id&#x8BBE;&#x7F6E;&#x503C;</p>
-<p>&#x200B;                         }</p>
-<p>&#x200B;                     })</p>
-<p>&#x200B;                     .removeField(&quot;age&quot;);//&#x79FB;&#x9664;age&#x5C5E;&#x6027;</p>
-<p>&#x200B;             oldVersion++;</p>
-<p>&#x200B;         }</p>
-<p>&#x200B;     }</p>
-<p>}</p>
-<p>3&#x3001;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#xFF0C;intent&#x4F20;&#x503C;&#x95EE;&#x9898; </p>
-<p><img src="pic/image-intent.png" alt="image-intent"></p>
-<p>4&#x3001;&#x5176;&#x4ED6;&#xFF1A;&#x7EBF;&#x7A0B;&#xFF1B;realmlist&#x6CA1;&#x6709;&#x5E8F;&#x5217;&#x5316;&#xFF1B;Realmlist<t>&#x4E2D;&#xFF0C;T&#x5FC5;&#x987B;&#x7EE7;&#x627F;RealmObject&#xFF0C;ealmList<string>;&#x81EA;&#x5DF1;&#x7EF4;&#x62A4;primarykey</string></t></p>
-
+                                
                                 
                                 </section>
                             
@@ -221,6 +225,10 @@
             
                 
                 
+                <a href="DBColumn/README.md" class="navigation navigation-next navigation-unique" aria-label="Next page: DBColumn">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
             
         
     </div>
@@ -228,7 +236,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"DBColumn","level":"1.1","depth":1,"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2019-10-30T03:25:08.050Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-10-30T03:25:41.790Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"DBColumn","level":"1.2","depth":1,"path":"DBColumn/README.md","ref":"DBColumn/README.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2019-10-30T06:48:59.173Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-10-30T08:37:44.804Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
@@ -236,6 +244,10 @@
         
     <script src="gitbook/gitbook.js"></script>
     <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
     
         
         <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>

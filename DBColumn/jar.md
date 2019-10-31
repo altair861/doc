@@ -1,6 +1,6 @@
 # jar包生成
 
-cydb-library的项目结构为
+[cydb-library](http://github.com/altair861/DBColumn.git)的项目结构为
 
 ![image-20191030164442300](../pic/image-library.png)
 

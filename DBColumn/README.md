@@ -30,7 +30,22 @@
 
 1、导入`cydb-library.jar`包
 
-2、为需要生成数据表的model添加注释
+2、若需要在module中使用，请在build.gradle中的`defaultConfig`下配置：
+
+```java
+defaultConfig {
+        ...
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [DBCOLUMN_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+```
+
+
+
+3、为需要生成数据表的model添加注释
 
 ```java
 public @interface DBColumn {
@@ -74,18 +89,18 @@ public class User extends BaseModel{
 }
 ```
 
-3、初始化数据库相关
+4、初始化数据库相关
 
 ```java
 //设置库名、版本号，加密密钥
 DBHelper.setConfig(String dbName, int dbVersion, String dbPwd)；
 //初始化
-DBHelper.init(Context context, DBModelsConstant.models);
+DBHelper.init(Context context);
 ```
 
 
 
-4、使用相关
+5、使用相关
 
 ```java
 //批量插入

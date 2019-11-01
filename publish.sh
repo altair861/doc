@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
-#cd Hadoop-The-Definitive-Guide-4th &&\
+cd `dirname $0`
 git checkout master &&\
 gitbook init &&\
 gitbook build &&\

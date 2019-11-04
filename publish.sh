@@ -2,6 +2,7 @@
 set -e
 
 cd `dirname $0`
+INDEX_HTML=./_book/index.html
 
 function getLine() {
     str=$1
@@ -32,7 +33,8 @@ gitbook init &&\
 gitbook build &&\
 #去除目录里边的“Published with GitBook”项
 BatchDelGitBookItem
-
+#变更index.html中图片的相对路径
+sed -i "" s/"\.\.\/pic"/"\.\/pic1"/g $INDEX_HTML
 git add . &&\
 git commit -m 'update gitbook' &&\
 git push origin master &&\

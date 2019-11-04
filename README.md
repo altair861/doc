@@ -22,7 +22,7 @@ var gitalk = new Gitalk({
 
 "clientID": "f452f976595591ff3304",
 "clientSecret": "230e5db6dfa1fdbe9a0e9987b58025092f938e62",
-"repo": "altair861.github.io/doc",
+"repo": "doc",
 "owner": "altair861",
 "admin": ["altair861"],
 "id": location.pathname,      

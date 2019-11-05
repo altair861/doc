@@ -26,15 +26,33 @@ function BatchDelGitBookItem(){
      done
 }
 
+function addComment(){
+	#在_book路径下查找html文件
+	#filelist=$(cat SUMMARY.md | cut -d '(' -f2|cut -d ')' -f1)
+	filelist=$(grep -o "(.*)" SUMMARY.md)
+    for file in $filelist
+     do
+     	temp=${file#*(}
+        fileName=${temp%*)}
+        #去除index.html对应的readme.md
+        if [[ $fileName != "README.md" ]]
+        then
+        	echo $fileName
+        	cat comment.xml >> $fileName	
+        fi
+     done
+}
 
-git checkout master &&\
 #:<<!
+git checkout master &&\
 gitbook init &&\
 gitbook build &&\
 #去除目录里边的“Published with GitBook”项
 BatchDelGitBookItem
 #变更index.html中图片的相对路径
 #sed -i "" s/"\.\.\/pic"/"\.\/pic"/g $INDEX_HTML
+#为需要的页面添加评论模块
+addComment
 git add . &&\
 git commit -m 'update gitbook' &&\
 git push origin master &&\

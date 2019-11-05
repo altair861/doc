@@ -58,3 +58,22 @@ public class User extends BaseModel implements RealmModel
 2、父类属性能为列
 
 3、简洁
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script>
+
+var gitalk = new Gitalk({
+
+"clientID": "f452f976595591ff3304",
+"clientSecret": "230e5db6dfa1fdbe9a0e9987b58025092f938e62",
+"repo": "doc",
+"owner": "altair861",
+"admin": ["altair861"],
+"id": location.pathname,      
+"distractionFreeMode": false  
+});
+gitalk.render("gitalk-container");
+
+</script>

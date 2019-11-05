@@ -45,14 +45,14 @@ function addComment(){
 
 #:<<!
 git checkout master &&\
+#为需要的页面添加评论模块
+addComment
 gitbook init &&\
 gitbook build &&\
 #去除目录里边的“Published with GitBook”项
 BatchDelGitBookItem
 #变更index.html中图片的相对路径
 #sed -i "" s/"\.\.\/pic"/"\.\/pic"/g $INDEX_HTML
-#为需要的页面添加评论模块
-addComment
 git add . &&\
 git commit -m 'update gitbook' &&\
 git push origin master &&\
